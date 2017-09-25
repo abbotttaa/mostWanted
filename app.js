@@ -67,41 +67,45 @@ function inputEyeColorFinder() {
     }
 }
 
+
 function searchByName(people){
   var firstName = promptFor("What is the person's first name?", chars);
   var lastName = promptFor("What is the person's last name?", chars);
 }
-function searchByHeight() {
-  let Height = promptFor("How tall is he/she?", chars);
+function searchByHeight(people) {
+  let Height = promptFor("How tall is he/she? Enter in inches, and only as numbers.", chars);
 }
-function searchByWeight() {
-  let Weight = promptFor("How much does he/she weight?", chars)
+function searchByWeight(people) {
+  let Weight = promptFor("How much does he/she weight? Enter in pounds, and only as numbers", chars)
 }
-function searchByGender() {
+function searchByGender(people) {
   let Gender = promptFor("What gender is he/she?", chars)
 }
-function searchByOccupation() {
+function searchByOccupation(people) {
   let Occupation = promptFor("What does he/she do for his/her/ occupation?", chars)
 }
-function searchByEyeColor() {
+function searchByEyeColor(people) {
   let eyeColor = promptFor("what color eyes does he/she have?", char)
 }
 
 
-function findHeight()
-function findWeight()
-function findGender()
-function findOccupation()
-function findEyeColor()
 
-function wantedGenerator(){
-  let character = {
-    this.Height = Height;
-    this.Weight = Weight;
-    this.Gender = Gender;
-    this.Occupation = Occupation;
-    this.eyeColor = eyeColor;
-  }
+
+
+// function findHeight()
+// function findWeight()
+// function findGender()
+// function findOccupation()
+// function findEyeColor()
+
+// function wantedGenerator(){
+//   let character = {
+//     this.Height = Height;
+//     this.Weight = Weight;
+//     this.Gender = Gender;
+//     this.Occupation = Occupation;
+//     this.eyeColor = eyeColor;
+//   }
 }
 
 // Menu function to call once you find who you are looking for
