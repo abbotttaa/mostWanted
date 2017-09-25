@@ -5,7 +5,7 @@ Build all of your functions for displaying and gathering information below (GUI)
 // app is the function called to start the entire application
 function app(people){
   let userInputArray = []
-  var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();// prevent breaking by user input
+  let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   switch(searchType){
     case 'yes':
       searchByName();
@@ -20,33 +20,88 @@ function app(people){
 }
 
 function inputFinder() {
-   let Height = promptFor("How tall is he/she? \"yes\", \"no\"" yesNo).toLowerCase(); 
-    switch (Height) {
+  inputHeightFinder()
+  inputWeightFinder()
+  inputGenderFinder()
+  inputOccupationFinder()
+  inputEyeColorFinder()
+}
+function inputHeightFinder() {
+   let searchType = promptFor("Do you know how tall he/she is? \"yes\", \"no\"" yesNo).toLowerCase(); 
+    switch searchType {
       case 'yes':
-
+        searchByHeight()
+      case 'no' :
     }
-      
-  let Weight = promptFor("How much does he/she weigh?\"yes\", \"no\"", yesNo).toLowerCase();
-  let Gender = promptFor("How much does he/she weigh?\"yes\", \"no\"", yesNo).toLowerCase();
-  let occupation = promptFor("How much does he/she weigh?\"yes\", \"no\"", yesNo).toLowerCase();
-  let eyeColor = promptFor("How much does he/she weigh?\"yes\", \"no\"", yesNo).toLowerCase();
+}
+function inputWeightFinder() {
+    let searchType = promptFor("Do you know how much he/she weighs?" \"yes\", \"no\"" yesNo).toLowerCase();
+      switch(searchType) = {
+        case 'yes':
+          searchByWeight()
+        case 'no' :
+    }
+}
+function inputGenderFinder() {
+    let searchType = promptFor("Do you know what gender he/she is?" \"yes\", \"no\"" yesNo).toLowerCase();
+      switch(searchType) = {
+        case 'yes':
+          searchByGender()
+        case 'no' :
+    }
+}
+function inputOccupationFinder() {
+    let searchType = promptFor("Do you know what he/she does as his/her occupation?" \"yes\", \"no\"" yesNo).toLowerCase();
+      switch(searchType) = {
+        case 'yes':
+          searchByOccupation()
+        case 'no' :
+    }
+}
+function inputEyeColorFinder() {
+    let searchType = promptFor("Do you know what color eye's he/she has?" \"yes\", \"no\"" yesNo).toLowerCase();
+      switch(searchType) = {
+        case 'yes':
+          searchByEyeColor()
+        case 'no' :
     }
 }
 
-function findHeight()
+function searchByName(people){
+  var firstName = promptFor("What is the person's first name?", chars);
+  var lastName = promptFor("What is the person's last name?", chars);
+}
+function searchByHeight() {
+  let Height = promptFor("How tall is he/she?", chars);
+}
+function searchByWeight() {
+  let Weight = promptFor("How much does he/she weight?", chars)
+}
+function searchByGender() {
+  let Gender = promptFor("What gender is he/she?", chars)
+}
+function searchByOccupation() {
+  let Occupation = promptFor("What does he/she do for his/her/ occupation?", chars)
+}
+function searchByEyeColor() {
+  let eyeColor = promptFor("what color eyes does he/she have?", char)
+}
 
+
+function findHeight()
 function findWeight()
 function findGender()
 function findOccupation()
 function findEyeColor()
 
 function wantedGenerator(){
-let character = {
-  this.Height = Height;
-  this.Weight = Weight;
-  this.Gender = Gender;
-  this.Occupation = Occupation;
-  this.eyeColor = eyeColor;
+  let character = {
+    this.Height = Height;
+    this.Weight = Weight;
+    this.Gender = Gender;
+    this.Occupation = Occupation;
+    this.eyeColor = eyeColor;
+  }
 }
 
 // Menu function to call once you find who you are looking for
@@ -81,13 +136,6 @@ function mainMenu(person, people){
   }
 }
 
-function searchByName(people){
-  var firstName = promptFor("What is the person's first name?", chars);
-  var lastName = promptFor("What is the person's last name?", chars);
-
-  // TODO: find the person using the name they entered
-
-}
 
 // alerts a list of people
 function displayPeople(people){
