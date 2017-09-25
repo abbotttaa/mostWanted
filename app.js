@@ -26,6 +26,7 @@ function inputFinder() {
   filteredPeople = inputGenderFinder(filteredPeople);
   filteredPeople = inputOccupationFinder(filteredPeople);
   filteredPeople = inputEyeColorFinder(filteredPeople);
+  mainMenu(filteredPeople);
 }
 function inputHeightFinder() {
    let searchType = promptFor("Do you know how tall he/she is? \"yes\", \"no\"", yesNo).toLowerCase(); 
@@ -214,13 +215,13 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-    // TODO: get person's info
+      displayPeople(filteredPeople);
     break;
     case "family":
-    // TODO: get person's family
+      familyInfo(filteredPeople);
     break;
     case "descendants":
-    // TODO: get person's descendants
+      descendantsInfo(filteredPeople);
     break;
     case "restart":
     app(people); // restart
@@ -232,6 +233,9 @@ function mainMenu(person, people){
   }
 }
 
+function familyInfo(people) {
+  
+}
 
 // alerts a list of people
 function displayPeople(people){
