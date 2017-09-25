@@ -27,44 +27,60 @@ function inputFinder() {
   inputEyeColorFinder()
 }
 function inputHeightFinder() {
-   let searchType = promptFor("Do you know how tall he/she is? \"yes\", \"no\"" yesNo).toLowerCase(); 
-    switch searchType {
+   let searchType = promptFor("Do you know how tall he/she is? \"yes\", \"no\"", yesNo).toLowerCase(); 
+    switch (searchType) {
       case 'yes':
-        searchByHeight()
+        searchByHeight();
+        break;
       case 'no' :
+        break;
     }
+    return;
 }
 function inputWeightFinder() {
-    let searchType = promptFor("Do you know how much he/she weighs?" \"yes\", \"no\"" yesNo).toLowerCase();
-      switch(searchType) = {
+    let searchType = promptFor("Do you know how much he/she weighs? \"yes\", \"no\"", yesNo).toLowerCase();
+      switch(searchType) {
         case 'yes':
-          searchByWeight()
+          searchByWeight();
+          break;
         case 'no' :
+          break;
     }
+    return;
 }
 function inputGenderFinder() {
-    let searchType = promptFor("Do you know what gender he/she is?" \"yes\", \"no\"" yesNo).toLowerCase();
-      switch(searchType) = {
+    let searchType = promptFor("Do you know what gender he/she is? \"yes\", \"no\"", yesNo).toLowerCase();
+      switch(searchType) {
         case 'yes':
-          searchByGender()
+          searchByGender();
+          break;
         case 'no' :
+          break;
     }
+    return;
 }
 function inputOccupationFinder() {
-    let searchType = promptFor("Do you know what he/she does as his/her occupation?" \"yes\", \"no\"" yesNo).toLowerCase();
-      switch(searchType) = {
+    let searchType = promptFor("Do you know what he/she does as his/her occupation?" \"yes\", \"no\"", yesNo).toLowerCase();
+      switch(searchType) {
         case 'yes':
-          searchByOccupation()
+          searchByOccupation();
+          break;
         case 'no' :
+          break;
+
     }
+    return;
 }
 function inputEyeColorFinder() {
-    let searchType = promptFor("Do you know what color eye's he/she has?" \"yes\", \"no\"" yesNo).toLowerCase();
-      switch(searchType) = {
+    let searchType = promptFor("Do you know what color eye's he/she has? \"yes\", \"no\"", yesNo).toLowerCase();
+      switch(searchType) {
         case 'yes':
-          searchByEyeColor()
+          searchByEyeColor();
+          break;
         case 'no' :
+        break;
     }
+    return;
 }
 
 
@@ -73,16 +89,24 @@ function searchByName(people){
   var lastName = promptFor("What is the person's last name?", chars);
 }
 function searchByHeight(people) {
-  let Height = promptFor("How tall is he/she? Enter in inches, and only as numbers.", chars);
+  let height = promptFor("How tall is he/she? Enter in inches, and only as numbers.", chars);
+  let filteredPeople = data.filter( function(el){
+    if( el === height){ 
+    return true; }
+   else { 
+  return false; 
+}
+}); 
+
 }
 function searchByWeight(people) {
-  let Weight = promptFor("How much does he/she weight? Enter in pounds, and only as numbers", chars)
+  let weight = promptFor("How much does he/she weight? Enter in pounds, and only as numbers", chars)
 }
 function searchByGender(people) {
-  let Gender = promptFor("What gender is he/she?", chars)
+  let gender = promptFor("What gender is he/she?", chars)
 }
 function searchByOccupation(people) {
-  let Occupation = promptFor("What does he/she do for his/her/ occupation?", chars)
+  let occupation = promptFor("What does he/she do for his/her/ occupation?", chars)
 }
 function searchByEyeColor(people) {
   let eyeColor = promptFor("what color eyes does he/she have?", char)
@@ -106,7 +130,7 @@ function searchByEyeColor(people) {
 //     this.Occupation = Occupation;
 //     this.eyeColor = eyeColor;
 //   }
-}
+//}
 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
