@@ -4,11 +4,11 @@ Build all of your functions for displaying and gathering information below (GUI)
 
 // app is the function called to start the entire application
 function app(people){
-  let filteredPeople = []
+  let filteredPeople = [];
   let searchType = promptFor("This is the Most Wanted database.  We will now ask you some questions to narrow down to one person. You'll need to narrow it down to one person.  Enter 'yes' or 'no' if you understand and are ready to start", yesNo).toLowerCase();
   switch(searchType){
     case 'yes':
-      inputFinder(filteredPeople);
+      inputFinder(filteredPeople, people);
     break;
     case 'no':
       app(people);
@@ -19,7 +19,7 @@ function app(people){
   }
 }
 
-function inputFinder(filteredPeople) {
+function inputFinder(filteredPeople, allPeople) {
   filteredPeople = inputFirstNameFinder(filteredPeople);
   filteredPeople = inputLastNameFinder(filteredPeople);
   filteredPeople = inputHeightFinder(filteredPeople);
@@ -33,7 +33,7 @@ function inputFinder(filteredPeople) {
    		inputFinder(filteredPeople)
    		}
    	else {
-   			mainMenu(filteredPeople);
+   			mainMenu(filteredPeople[0]);
    	}
   
 }
@@ -41,7 +41,7 @@ function inputFirstNameFinder(filteredPeople){
   let searchType = promptFor("Do you know the first name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
     switch (searchType) {
       case 'yes':
-       filteredPeople = searchByfirstName(filteredPeople);
+       filteredPeople = searchByFirstName(filteredPeople);
         break;
       case 'no' :
         break;
@@ -128,7 +128,7 @@ function inputAgeFinder(filteredPeople){
 }
 
 function searchByFirstName(filteredPeople){
-  let firstName = promptFor("What is the person's last name?", chars);
+  let firstName = promptFor("What is the person's first name?", chars);
   firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
   if (filteredPeople.length > 0){
       filteredPeople = filteredPeople.filter( function(person){
@@ -337,7 +337,7 @@ return filteredPeople;
 }
 
 // Menu function to call once you find who you are looking for
-function mainMenu(person, people){
+function mainMenu(person, people, filteredPeople){
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
