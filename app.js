@@ -26,6 +26,7 @@ function inputFinder(filteredPeople) {
   filteredPeople = inputGenderFinder(filteredPeople);
   filteredPeople = inputOccupationFinder(filteredPeople);
   filteredPeople = inputEyeColorFinder(filteredPeople);
+  // filteredPeople = searchByAge(filteredPeople);
   mainMenu(filteredPeople);
 }
 function inputLastNameFinder(filteredPeople){
@@ -137,7 +138,7 @@ console.log(filteredPeople);
   return filteredPeople;
 }
 }
-function searchByHeight(people) {
+function searchByHeight(filteredPeople) {
   let height = promptFor("How tall is he/she? Enter in inches, and only as numbers.", chars);
     if (filteredPeople.length > 0){
       filteredPeople = filteredPeople.filter( function(person){
@@ -164,7 +165,7 @@ console.log(filteredPeople);
 return filteredPeople;
 }
 }
-function searchByWeight(people) {
+function searchByWeight(filteredPeople) {
   let weight = promptFor("How much does he/she weight? Enter in pounds, and only as numbers", chars);
     if (filteredPeople.length > 0){
       filteredPeople = filteredPeople.filter( function(person){
@@ -188,7 +189,7 @@ console.log(filteredPeople);
 return filteredPeople;
 }
 }
-function searchByGender(people) {
+function searchByGender(filteredPeople) {
   let gender = promptFor("What gender is he/she?", chars);
     if (filteredPeople.length > 0){
       filteredPeople = filteredPeople.filter( function(person){
@@ -213,7 +214,7 @@ console.log(filteredPeople);
 return filteredPeople;
 }
 }
-function searchByOccupation(people) {
+function searchByOccupation(filteredPeople) {
   let occupation = promptFor("What does he/she do for his/her/ occupation?", chars);
     if (filteredPeople.length > 0){
       filteredPeople = filteredPeople.filter( function(person){
@@ -239,7 +240,7 @@ console.log(filteredPeople);
 return filteredPeople;
 }
 }
-function searchByEyeColor(people) {
+function searchByEyeColor(filteredPeople) {
   let eyeColor = promptFor("what color eyes does he/she have?", char);
     if (filteredPeople.length > 0){
       filteredPeople = filteredPeople.filter( function(person){
@@ -266,9 +267,52 @@ return filteredPeople;
 }
 }
 
+// function searchByAge(filteredPeople){
+//  let ageInYears = promptFor("What is his/her age? Enter only numbers", chars);
+//  let calcAge = filterDoBintoYearValue(data);
+//      if (filteredPeople.length > 0){
+//      filteredPeople = filteredPeople.filter( function(person){
+//        if( calcAge == ageInYears){
+//    return true; }
+//   else {
+//  return false; 
+// }
+// });
+//   return filteredPeople;
+//  }
+//  else {
+//  filteredPeople = data.filter( function(person){
 
+//    if( calcAge == ageInYears){
+//    return true; }
+//   else {
+//  return false;
+//  }
 
+// // return filteredPeople;
+// }); 
+// console.log(filteredPeople);
+// return filteredPeople;
+// }
+// }
 
+// function filterDoBintoYearValue(person) {
+//  let date1 = new Date();
+// let date2 = new Date(dobFetcher(person)); // person on filter DoB
+// let timeComb = Math.abs(date1.getTime()) + Math.abs(date2.getTime());
+// let diffDays = (timeComb / (1000 * 3600 * 24)); 
+// let diffYears = Math.floor(diffDays / 365.25)
+// return diffYears;
+// }
+
+// function dobFetcher(people) {
+//     if (filteredPeople.length >0) {
+//         filteredPeople = filteredPeople.filter( function(person)) {
+//             if (person.dob == dob)
+//                 return dob
+//         }
+//     }
+// }
 
 // function findHeight()
 // function findWeight()
