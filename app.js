@@ -41,7 +41,7 @@ function inputFirstNameFinder(filteredPeople){
   let searchType = promptFor("Do you know the first name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
     switch (searchType) {
       case 'yes':
-       filteredPeople = searchByfirstName(filteredPeople);
+       filteredPeople = searchByFirstName(filteredPeople);
         break;
       case 'no' :
         break;
@@ -128,7 +128,7 @@ function inputAgeFinder(filteredPeople){
 }
 
 function searchByFirstName(filteredPeople){
-  let firstName = promptFor("What is the person's last name?", chars);
+  let firstName = promptFor("What is the person's first name?", chars);
   firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
   if (filteredPeople.length > 0){
       filteredPeople = filteredPeople.filter( function(person){
