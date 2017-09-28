@@ -385,8 +385,9 @@ function mainMenu(person, people, filteredPeople){
 }
 function familyInfo(filteredPeople) {
   // let filteredParents = parentsFinder(filteredPeople);
-   let filteredSiblings = siblingFinder(filteredPeople);
+  // let filteredSiblings = siblingFinder(filteredPeople);
   // let filteredSpouse = spouseFinder(filteredPeople);
+     let filteredChildren = childrenFinder(filteredPeople);
 }
 function parentsFinder(filteredPeople){
   let filteredParents = filteredPeople.parents;
@@ -406,7 +407,6 @@ function parentsFinder(filteredPeople){
 function siblingFinder(filteredPeople){
   let filteredSiblings = filteredPeople.parents;
   for (let i = 0; i < filteredPeople.parents.length; i++){
-               //  for(var x = 0; x < data.length; x++){
     filteredSiblings[1] = data.filter( function(person){
         if (filteredPeople.parents[0] == person.parents[0]){
           return true;
@@ -420,17 +420,33 @@ function siblingFinder(filteredPeople){
   return filteredSiblings;
 }
 function spouseFinder(filteredPeople){
-     filteredSpouse = data.filter( function(person){
-        if (filteredPeople.currentSpouse == person.id){
-          return true;
-        }
-        else {
-          return false;
-        }
-      });
+  filteredSpouse = data.filter( function(person){
+    if (filteredPeople.currentSpouse == person.id){
+      return true;
+    }
+    else {
+      return false;
+    }
+  });
   console.log(filteredSpouse);
   return filteredSpouse;
 }
+
+function childrenFinder(filteredPeople){
+  for(let i = 0; i < 1; i++){
+    filteredChildren = data.filter( function(person){
+      if (filteredPeople.id == person.parents[i]){
+        return true;
+      }
+      else {
+        return false;
+      }
+    });
+  }
+  console.log(filteredChildren);
+  return filteredChildren;
+}
+
 function displayPerson(person){
 // print all of the information about a person:
 // height, weight, age, name, occupation, eye color.
