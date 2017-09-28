@@ -370,7 +370,8 @@ function mainMenu(person, people, filteredPeople){
       familyInfo(filteredPeople);
       break;
     case "descendants":
-      familyInfo(filteredPeople);
+      familyFinder(filteredPeople, people);
+      // familyTree(filteredPeople, people, filteredFamilyTree);
       break;
     case "restart":
       app(people); // restart
@@ -387,7 +388,7 @@ function familyInfo(filteredPeople) {
   // let filteredParents = parentsFinder(filteredPeople);
   // let filteredSiblings = siblingFinder(filteredPeople);
   // let filteredSpouse = spouseFinder(filteredPeople);
-   let filteredChildren = childrenFinder(filteredPeople);
+  // let filteredChildren = childrenFinder(filteredPeople);
 }
 function parentsFinder(filteredPeople){
   let filteredParents = [];
@@ -433,7 +434,7 @@ function spouseFinder(filteredPeople){
   return filteredSpouse;
 }
 
-function childrenFinder(filteredPeople){
+function childrenFinder(filteredPeople, person){
   for(let i = 0; i < 1; i++){
     filteredChildren = data.filter( function(person){
       if (filteredPeople.id == person.parents[i]){
@@ -447,6 +448,19 @@ function childrenFinder(filteredPeople){
   console.log(filteredChildren);
   return filteredChildren;
 }
+
+function familyFinder(filteredPeople, people, filteredDescendants = []){
+  let filteredchildren = childrenFinder(filteredPeople, people)
+
+    for(let i = 0; i < filteredChildren.length; i++){
+      filteredDescendants.push(filteredChildren[i]);
+       return filteredchildren = filteredchildren.concat(familyFinder(filteredChildren[i], people, filteredDescendants));
+      // return familyFinder(filteredChildren[i], people, filteredDescendants);
+    }
+    //
+return filteredDescendants;
+  }
+
 
 function displayPerson(person){
 // print all of the information about a person:
@@ -479,3 +493,5 @@ function filterDoBintoYearValue(person) {
 function chars(input){
   return true; // default validation only
 }
+
+
