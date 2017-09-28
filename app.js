@@ -387,10 +387,10 @@ function familyInfo(filteredPeople) {
   // let filteredParents = parentsFinder(filteredPeople);
   // let filteredSiblings = siblingFinder(filteredPeople);
   // let filteredSpouse = spouseFinder(filteredPeople);
-     let filteredChildren = childrenFinder(filteredPeople);
+   let filteredChildren = childrenFinder(filteredPeople);
 }
 function parentsFinder(filteredPeople){
-  let filteredParents = filteredPeople.parents;
+  let filteredParents = [];
   for (let i = 0; i < filteredPeople.parents.length; i++){
     filteredParents[i] = data.filter( function(person){
         if (filteredPeople.parents[i] == person.id){
@@ -407,8 +407,8 @@ function parentsFinder(filteredPeople){
 function siblingFinder(filteredPeople){
   let filteredSiblings = filteredPeople.parents;
   for (let i = 0; i < filteredPeople.parents.length; i++){
-    filteredSiblings[1] = data.filter( function(person){
-        if (filteredPeople.parents[0] == person.parents[0]){
+    filteredSiblings[i] = data.filter( function(person){
+        if (filteredPeople.parents[i] == person.parents[i]){
           return true;
         }
         else {
@@ -416,8 +416,9 @@ function siblingFinder(filteredPeople){
         }
       });
   }
-  console.log(filteredSiblings);
-  return filteredSiblings;
+  console.log("siblings")
+  console.log(filteredSiblings[0]);
+  return filteredSiblings[0];
 }
 function spouseFinder(filteredPeople){
   filteredSpouse = data.filter( function(person){
