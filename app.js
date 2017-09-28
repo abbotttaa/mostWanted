@@ -1,7 +1,6 @@
 /*
 Build all of your functions for displaying and gathering information below (GUI).
 */
-
 // app is the function called to start the entire application
 function app(people){
   let filteredPeople = [];
@@ -18,7 +17,6 @@ function app(people){
       break;
   }
 }
-
 function inputFinder(filteredPeople, allPeople) {
   filteredPeople = inputFirstNameFinder(filteredPeople);
   // filteredPeople = inputLastNameFinder(filteredPeople);
@@ -28,7 +26,6 @@ function inputFinder(filteredPeople, allPeople) {
   // filteredPeople = inputOccupationFinder(filteredPeople);
   // filteredPeople = inputEyeColorFinder(filteredPeople);
   // filteredPeople = inputAgeFinder(filteredPeople);
-
   if (filteredPeople.length !== 1) {
     alert("Search has been narrowed down to more or less than one person, we'll need to try again")
     inputFinder(filteredPeople);
@@ -37,10 +34,8 @@ function inputFinder(filteredPeople, allPeople) {
     mainMenu(filteredPeople[0], filteredPeople[0], filteredPeople[0]);
   }
 }
-
 function inputFirstNameFinder(filteredPeople){
   let searchType = promptFor("Do you know the first name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
-
   switch (searchType) {
     case 'yes':
       filteredPeople = searchByFirstName(filteredPeople);
@@ -50,7 +45,6 @@ function inputFirstNameFinder(filteredPeople){
   }
   return filteredPeople;
 }
-
 function inputLastNameFinder(filteredPeople){
   let searchType = promptFor("Do you know the last name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   
@@ -63,7 +57,6 @@ function inputLastNameFinder(filteredPeople){
   }
   return filteredPeople;
 }
-
 function inputHeightFinder(filteredPeople) {
   let searchType = promptFor("Do you know how tall he/she is? \"yes\", \"no\"", yesNo).toLowerCase(); 
   
@@ -76,10 +69,8 @@ function inputHeightFinder(filteredPeople) {
   }
   return filteredPeople;
 }
-
 function inputWeightFinder(filteredPeople) {
   let searchType = promptFor("Do you know how much he/she weighs? \"yes\", \"no\"", yesNo).toLowerCase();
-
   switch(searchType) {
     case 'yes':
       filteredPeople = searchByWeight(filteredPeople);
@@ -89,10 +80,8 @@ function inputWeightFinder(filteredPeople) {
   }
   return filteredPeople;
 }
-
 function inputGenderFinder(filteredPeople) {
   let searchType = promptFor("Do you know what gender he/she is? \"yes\", \"no\"", yesNo).toLowerCase();
-
   switch(searchType) {
     case 'yes':
       searchByGender(filteredPeople);
@@ -102,7 +91,6 @@ function inputGenderFinder(filteredPeople) {
   }
   return filteredPeople;
 }
-
 function inputOccupationFinder(filteredPeople) {
   let searchType = promptFor("Do you know what he/she does as his/her occupation? \"yes\", \"no\"", yesNo).toLowerCase();
   
@@ -115,10 +103,8 @@ function inputOccupationFinder(filteredPeople) {
   }
   return filteredPeople;
 }
-
 function inputEyeColorFinder(filteredPeople) {
   let searchType = promptFor("Do you know what color eye's he/she has? \"yes\", \"no\"", yesNo).toLowerCase();
-
   switch(searchType) {
     case 'yes':
       filteredPeople = searchByEyeColor(filteredPeople);
@@ -128,7 +114,6 @@ function inputEyeColorFinder(filteredPeople) {
   }
   return filteredPeople;
 }
-
 function inputAgeFinder(filteredPeople){
   let searchType = promptFor("Do you know how old he/she is? Enter 'yes' or 'no'", yesNo).toLowerCase();
   switch (searchType) {
@@ -140,11 +125,9 @@ function inputAgeFinder(filteredPeople){
   }
   return filteredPeople;
 }
-
 function searchByFirstName(filteredPeople){
 let firstName = promptFor("What is the person's first name?", chars);
 firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
-
   if (filteredPeople.length > 0){
     filteredPeople = filteredPeople.filter( function(person){
       if( person.firstName == firstName){ 
@@ -170,11 +153,9 @@ firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
     return filteredPeople;
   }
 }
-
 function searchByLastName(filteredPeople){
   let lastName = promptFor("What is the person's last name?", chars);
   lastName = lastName.charAt(0).toUpperCase() + lastName.slice(1);
-
   if (filteredPeople.length > 0){
     filteredPeople = filteredPeople.filter( function(person){
       if( person.lastName == lastName){ 
@@ -200,10 +181,8 @@ function searchByLastName(filteredPeople){
     return filteredPeople;
   }
 }
-
 function searchByHeight(filteredPeople) {
   let height = promptFor("How tall is he/she? Enter in inches, and only as numbers.", chars);
-
   if (filteredPeople.length > 0){
     filteredPeople = filteredPeople.filter( function(person){
       if( person.height == height){ 
@@ -229,10 +208,8 @@ function searchByHeight(filteredPeople) {
     return filteredPeople;
   }
 }
-
 function searchByWeight(filteredPeople) {
   let weight = promptFor("How much does he/she weight? Enter in pounds, and only as numbers", chars);
-
   if (filteredPeople.length > 0){
     filteredPeople = filteredPeople.filter( function(person){
       if( person.weight == weight){ 
@@ -257,10 +234,8 @@ function searchByWeight(filteredPeople) {
     return filteredPeople;
   }
 }
-
 function searchByGender(filteredPeople) {
   let gender = promptFor("What gender is he/she?", chars);
-
   if (filteredPeople.length > 0){
     filteredPeople = filteredPeople.filter( function(person){
       if( person.gender == gender){ 
@@ -286,10 +261,8 @@ function searchByGender(filteredPeople) {
     return filteredPeople;
   }
 }
-
 function searchByOccupation(filteredPeople) {
   let occupation = promptFor("What does he/she do for his/her/ occupation?", chars);
-
     if (filteredPeople.length > 0){
       filteredPeople = filteredPeople.filter( function(person){
         if( person.occupation == occupation){ 
@@ -315,7 +288,6 @@ function searchByOccupation(filteredPeople) {
       return filteredPeople;
     }
 }
-
 function searchByEyeColor(filteredPeople) {
   let eyeColor = promptFor("what color eyes does he/she have?", chars);
     
@@ -344,7 +316,6 @@ function searchByEyeColor(filteredPeople) {
       return filteredPeople;
     }
 }
-
 function searchByAge(filteredPeople){
   let ageInYears = promptFor("What is his/her age? Enter only numbers", chars);
   ageInYears = parseInt(ageInYears);
@@ -373,19 +344,14 @@ function searchByAge(filteredPeople){
     return filteredPeople;
   }
 }
-
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people, filteredPeople){
-
 /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
-
   if(!person){
     alert("Could not find that individual.");
     return app(people); // restart
   }
-
   let displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
-
   switch(displayOption){
     case "info":
       alert("ID: " + person.id + "\n" + 
@@ -417,19 +383,15 @@ function mainMenu(person, people, filteredPeople){
   }
   return app(people);
 }
-
 function familyInfo(filteredPeople) {
   // let filteredParents = parentsFinder(filteredPeople);
    let filteredSiblings = siblingFinder(filteredPeople);
   // let filteredSpouse = spouseFinder(filteredPeople);
 }
-
 function parentsFinder(filteredPeople){
   let filteredParents = filteredPeople.parents;
-
   for (let i = 0; i < filteredPeople.parents.length; i++){
     filteredParents[i] = data.filter( function(person){
-
         if (filteredPeople.parents[i] == person.id){
           return true;
         }
@@ -441,14 +403,11 @@ function parentsFinder(filteredPeople){
   console.log(filteredParents);
   return filteredParents;
 }
-
 function siblingFinder(filteredPeople){
   let filteredSiblings = filteredPeople.parents;
-
   for (let i = 0; i < filteredPeople.parents.length; i++){
                //  for(var x = 0; x < data.length; x++){
     filteredSiblings[1] = data.filter( function(person){
-
         if (filteredPeople.parents[0] == person.parents[0]){
           return true;
         }
@@ -460,19 +419,8 @@ function siblingFinder(filteredPeople){
   console.log(filteredSiblings);
   return filteredSiblings;
 }
-
-
-
-// if (filteredSiblings.parents.includes(filteredSiblings[0]) || filteredSiblings.parents.includes(filteredSiblings[1]))
-// var arr =[1,2,3,4];
-// var result = arr.includes(2); // returns true
-
-
-
-
 function spouseFinder(filteredPeople){
      filteredSpouse = data.filter( function(person){
-
         if (filteredPeople.currentSpouse == person.id){
           return true;
         }
@@ -483,8 +431,6 @@ function spouseFinder(filteredPeople){
   console.log(filteredSpouse);
   return filteredSpouse;
 }
-
-
 function displayPerson(person){
 // print all of the information about a person:
 // height, weight, age, name, occupation, eye color.
@@ -493,7 +439,6 @@ function displayPerson(person){
 // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
-
 // function that prompts and validates user input
 function promptFor(question, valid){
   do{
@@ -501,12 +446,10 @@ function promptFor(question, valid){
   } while(!response || !valid(response));
   return response;
 }
-
 // helper function to pass into promptFor to validate yes/no answers
 function yesNo(input){
   return input.toLowerCase() == "yes" || input.toLowerCase() == "no" || input.toLowerCase() == "i don't know";
 }
-
 function filterDoBintoYearValue(person) {
   let date1 = new Date();
   let date2 = new Date(person.dob); // person on filter DoB
@@ -515,7 +458,6 @@ function filterDoBintoYearValue(person) {
   let diffYears = Math.floor(diffDays / 365.25)
   return diffYears;
 }
-
 // helper function to pass in as default promptFor validation
 function chars(input){
   return true; // default validation only
