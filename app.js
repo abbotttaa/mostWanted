@@ -121,6 +121,22 @@ function inputAgeFinder(filteredPeople){
     }
     return filteredPeople;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function searchByFirstName(filteredPeople){
 let firstName = promptFor("What's his/her first name?", chars);
 firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
@@ -369,7 +385,7 @@ function mainMenu(person, people, filteredPeople){
         familyInfo(filteredPeople);
           break;
       case "descendants":
-        familyFinder(filteredPeople);
+        displayPerson(childrenFinder(filteredPeople))
           break;
       case "restart":
         app(people); 
@@ -418,9 +434,10 @@ function siblingFinder(filteredPeople){
     }
   console.log(filteredSiblings[0]);
   alert("Sibling(s) has/have been logged into the console, Returning to main menu.");
-  return filteredSiblings[0];
+  return;
 }
 function spouseFinder(filteredPeople){
+  var filteredSpouse = [];
   filteredSpouse = data.filter( function(person){
     if (filteredPeople.currentSpouse == person.id){
       return true;
@@ -431,13 +448,18 @@ function spouseFinder(filteredPeople){
   });
   console.log(filteredSpouse);
   alert("Spouce has been logged into the console, Returning to main menu.");
-  return filteredSpouse;
+  return;
 }
 
-function displayPerson(person){
-  var personInfo = "First Name: " + person.firstName + "\n";
-  personInfo += "Last Name: " + person.lastName + "\n";
-  alert(personInfo);
+function displayPerson(filteredDescendants){
+  var shoutouts =[]
+  for(let i = 0; i < filteredDescendants.length; i++){
+  var personInfo = "First Name: "+ " " + filteredDescendants[i].firstName + "\n";
+  personInfo += "Last Name: "+ " " + filteredDescendants[i].lastName + "\n"; 
+  shoutouts.push(personInfo)
+  }
+  alert(shoutouts)
+  app();
 }
 
 function promptFor(question, valid){
@@ -463,29 +485,43 @@ function chars(input){
   return true; 
 }
 
-function childrenFinder(filteredPeople, person){
- for(let i = 0; i < 1; i++){
-   filteredChildren = data.filter( function(person){
-     if (filteredPeople.id == person.parents[i]){
-       return true;
-     }
-     else {
-       return false;
-     }
-   });
- }
-  alert("Children/Child have/has been logged into the console, Returning to main menu.");
- return filteredChildren;
+
+function childrenFinder(filteredPeople, filteredDescendants) {
+  var filteredDescendants =[];
+  var children = data.filter( function(person){
+    for (let i = 0; i < person.parents.length; i++) {
+      if (person.parents[i] === filteredPeople.id) {
+        filteredDescendants.push(person)
+        return true;
+      }
+      else {
+        for(let i = 0; i <= filteredDescendants.length; i++){
+          if(person.parents[i] === filteredDescendants[i]){
+          filteredDescendants.push(person)
+          return true;
+          }
+        }
+      }
+    }
+  }); 
+      for (let i = 0; i < children.length; i++) {
+        filteredPeople = children[i]
+          if(childrenFinder(filteredPeople) >= 1){
+          children = children.concat(childrenFinder(filteredPeople));
+        }
+      }
+
+      if(children.length > 0){
+        for(let j = 0; j < children.length; j++){
+
+          console.log(children[j])
+        }
+      }
+      return filteredDescendants
 }
 
-function familyFinder(filteredPeople, people, filteredDescendants = []){
- let filteredchildren = childrenFinder(filteredPeople, people)
 
-   for(let i = 0; i < filteredChildren.length; i++){
-     filteredDescendants.push(filteredChildren[i]);
-      return filteredchildren = filteredchildren.concat(familyFinder(filteredChildren[i], people, filteredDescendants));
-     // return familyFinder(filteredChildren[i], people, filteredDescendants);
-   }
-   //
-return filteredDescendants;
- }
+
+
+ 
+    
